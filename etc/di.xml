@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="BKozlic\ProductTabs\Api\Data\ProductTabInterface" type="BKozlic\ProductTabs\Model\ProductTab" />
+    <preference for="BKozlic\ProductTabs\Api\ProductTabRepositoryInterface" type="BKozlic\ProductTabs\Model\ProductTabRepository" />
+    <preference for="BKozlic\ProductTabs\Api\Data\ProductTabSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+</config>
