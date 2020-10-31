@@ -12,7 +12,6 @@ interface ProductTabInterface extends ExtensibleDataInterface
     const TAB_ID = 'tab_id';
     const IS_ACTIVE = 'is_active';
     const TAB_SORT = 'tab_sort';
-    const IDENTIFIER = 'identifier';
     const TITLE = 'title';
     const TAB_CLASS = 'tab_class';
     const CONTENT = 'content';
@@ -108,21 +107,6 @@ interface ProductTabInterface extends ExtensibleDataInterface
      * @return ProductTabInterface
      */
     public function setTitle($title);
-
-    /**
-     * Get identifier
-     *
-     * @return string
-     */
-    public function getIdentifier();
-
-    /**
-     * Set identifier
-     *
-     * @param string $identifier
-     * @return ProductTabInterface
-     */
-    public function setIdentifier($identifier);
 
     /**
      * Returns tab creation time

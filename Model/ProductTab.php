@@ -172,27 +172,6 @@ class ProductTab extends AbstractExtensibleModel implements ProductTabInterface,
     }
 
     /**
-     * Returns tab identifier
-     *
-     * @return string
-     */
-    public function getIdentifier()
-    {
-        return $this->getData(self::IDENTIFIER);
-    }
-
-    /**
-     * Set tab identifier
-     *
-     * @param string $identifier
-     * @return ProductTabInterface
-     */
-    public function setIdentifier($identifier)
-    {
-        return $this->setData(self::IDENTIFIER, $identifier);
-    }
-
-    /**
      * Returns tab creation time
      *
      * @return string

@@ -4,7 +4,6 @@
         <column xsi:type="smallint" name="tab_id" padding="6" unsigned="false" nullable="false" identity="true" comment="Tab ID" />
         <column xsi:type="boolean" name="is_active" nullable="false" default="true" comment="Is Tab Active"/>
         <column xsi:type="smallint" name="tab_sort" padding="6" unsigned="false" nullable="true" default="0" comment="Tab Sort Number" />
-        <column xsi:type="varchar" name="identifier" nullable="false" length="255" comment="Tab String Identifier"/>
         <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Tab Title"/>
         <column xsi:type="varchar" name="tab_class" nullable="true" length="255" comment="Tab Class Name"/>
         <column xsi:type="mediumtext" name="content" nullable="true" comment="Tab Content"/>
