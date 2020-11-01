@@ -51,6 +51,18 @@
                     </filters>
                 </templates>
             </settings>
+
+            <filterSelect name="store_id" provider="${ $.parentName }">
+                <settings>
+                    <captionValue>0</captionValue>
+                    <options class="BKozlic\ProductTabs\Ui\Component\Listing\Column\StoreOptions" />
+                    <label translate="true">Store View</label>
+                    <dataScope>store_id</dataScope>
+                    <imports>
+                        <link name="visible">componentType = column, index = ${ $.index }:visible</link>
+                    </imports>
+                </settings>
+            </filterSelect>
         </filters>
 
         <massaction name="listing_massaction">
@@ -95,6 +107,14 @@
             <settings>
                 <filter>text</filter>
                 <label translate="true">Tab Frontend Class</label>
+            </settings>
+        </column>
+
+        <column name="store_id" class="Magento\Store\Ui\Component\Listing\Column\Store">
+            <settings>
+                <label translate="true">Store View</label>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+                <sortable>false</sortable>
             </settings>
         </column>
 

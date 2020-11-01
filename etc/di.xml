@@ -12,10 +12,12 @@
         </arguments>
     </type>
 
-    <virtualType name="BKozlic\ProductTabs\Model\ResourceModel\ProductTab\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+    <type name="BKozlic\ProductTabs\Model\ResourceModel\ProductTab\Grid\Collection">
         <arguments>
+            <argument name="eventPrefix" xsi:type="string">product_tab_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">product_tab_grid_collection</argument>
             <argument name="mainTable" xsi:type="string">bkozlic_product_tabs</argument>
             <argument name="resourceModel" xsi:type="string">BKozlic\ProductTabs\Model\ResourceModel\ProductTab</argument>
         </arguments>
-    </virtualType>
+    </type>
 </config>
