@@ -101,8 +101,8 @@
             </settings>
             <formElements>
                 <multiselect>
-                        <options class="BKozlic\ProductTabs\Ui\Component\Listing\Column\StoreOptions" />
                     <settings>
+                        <options class="BKozlic\ProductTabs\Ui\Component\Listing\Column\StoreOptions"/>
                     </settings>
                 </multiselect>
             </formElements>

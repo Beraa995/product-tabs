@@ -3,6 +3,7 @@
     <module name="BKozlic_ProductTabs">
         <sequence>
             <module name="Magento_Catalog" />
+            <module name="Magento_Cms" />
         </sequence>
     </module>
 </config>
