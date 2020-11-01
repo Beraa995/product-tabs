@@ -1,4 +1,10 @@
 <?php
+/**
+ * @category  BKozlic
+ * @package   BKozlic\ProductTabs
+ * @author    Berin Kozlic - berin.kozlic@gmail.com
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
 namespace BKozlic\ProductTabs\Model\ResourceModel\ProductTab\Grid;
 
 use BKozlic\ProductTabs\Model\ResourceModel\ProductTab\Collection as TabCollection;
@@ -54,7 +60,15 @@ class Collection extends TabCollection implements SearchResultInterface
         AdapterInterface $connection = null,
         AbstractDb $resource = null
     ) {
-        parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $storeManager, $connection, $resource);
+        parent::__construct(
+            $entityFactory,
+            $logger,
+            $fetchStrategy,
+            $eventManager,
+            $storeManager,
+            $connection,
+            $resource
+        );
         $this->_eventPrefix = $eventPrefix;
         $this->_eventObject = $eventObject;
         $this->_init($model, $resourceModel);

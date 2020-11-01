@@ -1,4 +1,10 @@
 <?php
+/**
+ * @category  BKozlic
+ * @package   BKozlic\ProductTabs
+ * @author    Berin Kozlic - berin.kozlic@gmail.com
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
 namespace BKozlic\ProductTabs\Controller\Adminhtml\Tab;
 
 use BKozlic\ProductTabs\Model\ProductTabFactory;
@@ -98,7 +104,9 @@ class Edit extends Action implements HttpGetActionInterface
 
         $resultPage = $this->resultPageFactory->create();
         $resultPage->getConfig()->getTitle()->prepend(__('Product Tabs'));
-        $resultPage->getConfig()->getTitle()->prepend($tabModel->getId() ? $tabModel->getTitle() : __('New Product Tab'));
+        $resultPage->getConfig()->getTitle()->prepend(
+            $tabModel->getId() ? $tabModel->getTitle() : __('New Product Tab')
+        );
         return $resultPage;
     }
 }

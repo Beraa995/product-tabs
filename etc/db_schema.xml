@@ -1,4 +1,12 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * @category  BKozlic
+ * @package   BKozlic\ProductTabs
+ * @author    Berin Kozlic - berin.kozlic@gmail.com
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
 <schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
     <table name="bkozlic_product_tabs" resource="default" engine="innodb" comment="Product Tabs">
         <column xsi:type="smallint" name="tab_id" padding="6" unsigned="false" nullable="false" identity="true" comment="Tab ID" />
