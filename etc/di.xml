@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category  BKozlic
+ * @package   BKozlic\ProductTabs
+ * @author    Berin Kozlic - berin.kozlic@gmail.com
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="BKozlic\ProductTabs\Api\Data\ProductTabInterface" type="BKozlic\ProductTabs\Model\ProductTab" />
+    <preference for="BKozlic\ProductTabs\Api\ProductTabRepositoryInterface" type="BKozlic\ProductTabs\Model\ProductTabRepository" />
+    <preference for="BKozlic\ProductTabs\Api\Data\ProductTabSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="producttabs_listing_data_source" xsi:type="string">BKozlic\ProductTabs\Model\ResourceModel\ProductTab\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="BKozlic\ProductTabs\Model\ResourceModel\ProductTab\Grid\Collection">
+        <arguments>
+            <argument name="eventPrefix" xsi:type="string">product_tab_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">product_tab_grid_collection</argument>
+            <argument name="mainTable" xsi:type="string">bkozlic_product_tabs</argument>
+            <argument name="resourceModel" xsi:type="string">BKozlic\ProductTabs\Model\ResourceModel\ProductTab</argument>
+        </arguments>
+    </type>
+</config>

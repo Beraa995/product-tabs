@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category  BKozlic
+ * @package   BKozlic\ProductTabs
+ * @author    Berin Kozlic - berin.kozlic@gmail.com
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="bkozlic_product_tabs" resource="default" engine="innodb" comment="Product Tabs">
+        <column xsi:type="smallint" name="tab_id" padding="6" unsigned="false" nullable="false" identity="true" comment="Tab ID" />
+        <column xsi:type="boolean" name="is_active" nullable="false" default="true" comment="Is Tab Active"/>
+        <column xsi:type="smallint" name="tab_sort" padding="6" unsigned="false" nullable="true" default="0" comment="Tab Sort Number" />
+        <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Tab Title"/>
+        <column xsi:type="varchar" name="tab_class" nullable="true" length="255" comment="Tab Class Name"/>
+        <column xsi:type="mediumtext" name="content" nullable="true" comment="Tab Content"/>
+        <column xsi:type="timestamp" name="creation_time" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Tab Creation Time" />
+        <column xsi:type="timestamp" name="update_time" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Tab Modification Time" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="tab_id"/>
+        </constraint>
+    </table>
+
+    <table name="bkozlic_product_tabs_store" resource="default" engine="innodb" comment="Product Tab - Store Table">
+        <column xsi:type="smallint" name="tab_id" padding="6" unsigned="false" nullable="false" identity="false"/>
+        <column xsi:type="smallint" name="store_id" padding="5" unsigned="true" nullable="false" identity="false" comment="Store ID" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="tab_id" />
+            <column name="store_id" />
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="BKOZLIC_PRODUCT_TABS_STORE_TAB_ID_BKOZLIC_PRODUCT_TABS_TAB_ID" table="bkozlic_product_tabs_store"
+                    column="tab_id" referenceTable="bkozlic_product_tabs" referenceColumn="tab_id" onDelete="CASCADE" />
+        <constraint xsi:type="foreign" referenceId="BKOZLIC_PRODUCT_TABS_STORE_STORE_ID_STORE_STORE_ID" table="bkozlic_product_tabs_store"
+                    column="store_id" referenceTable="store" referenceColumn="store_id" onDelete="CASCADE" />
+        <index referenceId="BKOZLIC_PRODUCT_TABS_STORE_STORE_ID" indexType="btree">
+            <column name="store_id" />
+        </index>
+    </table>
+</schema>

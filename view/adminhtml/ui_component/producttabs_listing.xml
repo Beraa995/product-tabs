@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @category  BKozlic
+ * @package   BKozlic\ProductTabs
+ * @author    Berin Kozlic - berin.kozlic@gmail.com
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">producttabs_listing.producttabs_listing_data_source</item>
+        </item>
+    </argument>
+
+    <settings>
+        <buttons>
+            <button name="add">
+                <label translate="true">Add New Tab</label>
+                <class>primary</class>
+                <url path="*/*/new" />
+            </button>
+        </buttons>
+        <deps>
+            <dep>producttabs_listing.producttabs_listing_data_source</dep>
+        </deps>
+        <spinner>producttabs_columns</spinner>
+    </settings>
+
+    <dataSource name="producttabs_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">tab_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render" />
+        </settings>
+        <aclResource>BKozlic_ProductTabs::producttabs</aclResource>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="producttabs_listing_data_source">
+            <settings>
+                <requestFieldName>tab_id</requestFieldName>
+                <primaryFieldName>tab_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <filters name="listing_filters">
+            <settings>
+                <templates>
+                    <filters>
+                        <select>
+                            <param name="template" xsi:type="string">ui/grid/filters/elements/ui-select</param>
+                            <param name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</param>
+                        </select>
+                    </filters>
+                </templates>
+            </settings>
+
+            <filterSelect name="store_id" provider="${ $.parentName }">
+                <settings>
+                    <captionValue>0</captionValue>
+                    <options class="BKozlic\ProductTabs\Ui\Component\Listing\Column\StoreOptions" />
+                    <label translate="true">Store View</label>
+                    <dataScope>store_id</dataScope>
+                    <imports>
+                        <link name="visible">componentType = column, index = ${ $.index }:visible</link>
+                    </imports>
+                </settings>
+            </filterSelect>
+        </filters>
+
+        <massaction name="listing_massaction">
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure you want to delete selected items?</message>
+                        <title translate="true">Delete items</title>
+                    </confirm>
+                    <url path="producttabs/tab/massdelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+        </massaction>
+        <paging name="listing_paging" />
+    </listingToolbar>
+
+    <columns name="producttabs_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>tab_id</indexField>
+            </settings>
+        </selectionsColumn>
+
+        <column name="tab_id">
+            <settings>
+                <filter>textRange</filter>
+                <label>ID</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+
+        <column name="title">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Tab Title</label>
+            </settings>
+        </column>
+
+        <column name="tab_class">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Tab Frontend Class</label>
+            </settings>
+        </column>
+
+        <column name="store_id" class="Magento\Store\Ui\Component\Listing\Column\Store">
+            <settings>
+                <label translate="true">Store View</label>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+                <sortable>false</sortable>
+            </settings>
+        </column>
+
+        <column name="tab_sort">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Sort Order Number</label>
+            </settings>
+        </column>
+
+        <column name="is_active" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="BKozlic\ProductTabs\Model\ProductTab\Source\IsActive"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Status</label>
+            </settings>
+        </column>
+
+        <column name="creation_time" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Created</label>
+            </settings>
+        </column>
+
+        <column name="update_time" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Modified</label>
+            </settings>
+        </column>
+
+        <actionsColumn name="actions" class="BKozlic\ProductTabs\Ui\Component\Listing\Column\ProductTabActions">
+            <settings>
+                <indexField>tab_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>
